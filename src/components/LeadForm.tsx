@@ -4,9 +4,10 @@ interface LeadFormProps {
   headline?: string;
   buttonText?: string;
   id?: string;
+  compact?: boolean;
 }
 
-const LeadForm = ({ headline = "Book Free PMP Consultation", buttonText = "Book Free Consultation", id }: LeadFormProps) => {
+const LeadForm = ({ headline = "Book Free PMP Consultation", buttonText = "Book Free Consultation", id, compact }: LeadFormProps) => {
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -16,38 +17,31 @@ const LeadForm = ({ headline = "Book Free PMP Consultation", buttonText = "Book 
 
   if (submitted) {
     return (
-      <div id={id} className="rounded-lg bg-card p-6 shadow-lg border text-center">
-        <div className="text-2xl font-heading font-bold text-secondary mb-2">Thank You!</div>
-        <p className="text-muted-foreground">Our team will contact you within 24 hours.</p>
+      <div id={id} className="rounded-lg bg-card p-5 shadow-lg border text-center">
+        <div className="text-xl font-heading font-bold text-secondary mb-2">Thank You!</div>
+        <p className="text-sm text-muted-foreground">Our team will contact you within 24 hours.</p>
       </div>
     );
   }
 
   return (
-    <form id={id} onSubmit={handleSubmit} className="rounded-lg bg-card p-6 shadow-lg border space-y-4">
-      <h3 className="text-xl font-heading font-bold text-secondary text-center">{headline}</h3>
+    <form id={id} onSubmit={handleSubmit} className={`rounded-lg bg-card shadow-lg border ${compact ? "p-4 space-y-3" : "p-5 space-y-3"}`}>
+      <h3 className="text-lg font-heading font-bold text-secondary text-center">{headline}</h3>
       <input
-        required
-        type="text"
-        placeholder="Full Name"
-        className="w-full rounded-md border border-input bg-background px-4 py-3 text-sm font-body placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+        required type="text" placeholder="Full Name"
+        className="w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm font-body placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
       />
       <input
-        required
-        type="email"
-        placeholder="Email Address"
-        className="w-full rounded-md border border-input bg-background px-4 py-3 text-sm font-body placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+        required type="email" placeholder="Email Address"
+        className="w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm font-body placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
       />
       <input
-        required
-        type="tel"
-        placeholder="Phone Number"
-        className="w-full rounded-md border border-input bg-background px-4 py-3 text-sm font-body placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+        required type="tel" placeholder="Phone Number"
+        className="w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm font-body placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
       />
       <select
-        required
-        className="w-full rounded-md border border-input bg-background px-4 py-3 text-sm font-body text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-        defaultValue=""
+        required defaultValue=""
+        className="w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm font-body text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
       >
         <option value="" disabled>Years of Experience</option>
         <option value="0-2">0–2 years</option>
@@ -57,7 +51,7 @@ const LeadForm = ({ headline = "Book Free PMP Consultation", buttonText = "Book 
       </select>
       <button
         type="submit"
-        className="w-full rounded-md bg-primary py-3 text-sm font-heading font-bold text-primary-foreground hover:opacity-90 transition-opacity"
+        className="w-full rounded-md bg-primary py-2.5 text-sm font-heading font-bold text-primary-foreground hover:opacity-90 transition-opacity"
       >
         {buttonText}
       </button>
