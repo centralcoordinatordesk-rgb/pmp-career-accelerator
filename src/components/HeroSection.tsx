@@ -1,4 +1,4 @@
-import { Award, Globe, Headphones } from "lucide-react";
+import { Award, Globe, Headphones, Leaf } from "lucide-react";
 import LeadForm from "./LeadForm";
 
 const badges = [
@@ -19,6 +19,13 @@ const HeroSection = () => (
           <p className="text-lg text-muted-foreground font-body">
             Live online PMP certification training designed for professionals in the USA and Canada.
           </p>
+
+          {/* Golden leaf badge */}
+          <div className="inline-flex items-center gap-2 rounded-full border-2 border-yellow-500 bg-yellow-50 px-4 py-2">
+            <Leaf className="h-5 w-5 text-yellow-600" />
+            <span className="text-sm font-heading font-bold text-yellow-700">Most Preferred Institute</span>
+          </div>
+
           <div className="flex flex-wrap gap-4">
             {badges.map((b) => (
               <div key={b.text} className="flex items-center gap-2 rounded-md bg-accent px-3 py-2">
